@@ -1,0 +1,319 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: $light;
+  font-size: 18px;
+}
+
+.header-container {
+  max-width: 1800px;
+  display: flex;
+  flex-direction: row;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+header {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: white;
+  .header-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  nav {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 2rem;
+    flex-basis: 100%;
+    order: 3;
+    ul {
+      background-color: $primary-dark-violet;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      border-radius: 10px;
+      padding-top: 3rem;
+      li {
+        text-align: center;
+        margin-bottom: 3em;
+        color: $light;
+        font-size: 1.1em;
+        letter-spacing: -0.234375px;
+        line-height: 1.2rem;
+        font-weight: bold;
+        color: $light;
+        cursor: pointer;
+        &:hover {
+          color: $very-dark-blue !important;
+        }
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+    .members {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #9e9aa8;
+      margin-top: 2rem;
+      .login_link {
+        text-align: center;
+        color: $light;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .signup_btn {
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1.22rem;
+        border-radius: 28px;
+        padding: 1rem 2rem;
+        background-color: $primary-cayn;
+        border: none;
+        &:hover {
+          background-color: hsl(180, 43%, 64%);
+        }
+      }
+    }
+  }
+  .m_menu {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+footer {
+  background: $dark;
+  color: white;
+  padding: 3rem 0;
+  .logo {
+    padding-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+  .navs {
+    .nav {
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+      text-align: center;
+      .nav_title {
+        line-height: 1.3rem;
+        letter-spacing: -0.25px;
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+        align-items: left;
+        padding: 0;
+      }
+      ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        li {
+          text-align: center;
+          margin-bottom: 1rem;
+          padding-right: 0;
+          color: $light;
+          a {
+            font-size: 1.2em;
+            letter-spacing: -0.234375px;
+            line-height: 1.2rem;
+            text-decoration: none;
+            color: $light;
+            &:hover {
+              color: $primary-cayn;
+            }
+          }
+        }
+      }
+    }
+    .socials {
+      text-align: center;
+      padding-top: 1.5rem;
+      .social {
+        max-width: 24px;
+        margin-left: 1rem;
+        max-height: 24px;
+      }
+    }
+  }
+}
+
+#hero {
+  height: calc(100vh - 20px);
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+#hero {
+  text-align: center;
+  background-color: #fff;
+}
+.hero-warper {
+  img {
+    width: 100%;
+  }
+}
+.hero-heading {
+  h1 {
+    margin: 0.4em 0;
+    color: $very-dark-blue;
+    font-size: 2.2em;
+    line-height: 38px;
+  }
+  p {
+    color: $gray;
+  }
+}
+.get-started {
+  padding: 1em;
+  border-radius: 28px;
+  width: 70%;
+  font-size: 1em;
+  margin: 0.8em 0;
+}
+.primary-btn {
+  background-color: $primary-cayn;
+  border: none;
+  text-transform: capitalize;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  &:hover {
+    background-color: #7ccbcb;
+  }
+}
+#shorten-link {
+  text-align: -webkit-center;
+  position: relative;
+  bottom: 72px;
+}
+.shorten-form {
+  .shorten-input {
+    border: none;
+    margin-bottom: 1em;
+  }
+  .shorten-btn {
+    font-weight: 700;
+  }
+  .shorten-input,
+  .shorten-btn {
+    padding: 0.7em;
+    font-family: "Poppins", sans-serif;
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+  }
+  background-image: url(/images/bg-shorten-mobile.svg);
+  background-color: $primary-dark-violet;
+  padding: 2em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+  background-position: 76px -52px;
+}
+.shorten-result {
+  .shorten-result__elm {
+    background-color: white;
+    margin: 1em 0;
+    border-radius: 5px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    .original-link {
+      border-bottom: 1px solid #cacaca;
+      padding: 0.5em 1em;
+    }
+    .link-result {
+      padding: 1em;
+      a {
+        display: block;
+        color: $primary-cayn;
+        text-decoration: none;
+      }
+      .copy-btn {
+        font-family: "Poppins", sans-serif;
+        width: 100%;
+        padding: 0.8em;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+#statistic {
+  text-align: center;
+}
+.stat-title,
+.stat-card__title {
+  text-transform: capitalize;
+  margin: 0.5em 0;
+}
+.stat-title {
+  font-size: 1.8em;
+}
+.stat-heading,
+.stat-card__description {
+  color: $gray;
+}
+.stat-cards {
+  padding: 2em 0;
+  .stat-card {
+    background-color: #fff;
+    margin-bottom: 2em;
+    padding: 1.5em;
+    .stat-card__icon {
+      background-color: #3b3054;
+      display: inline-block;
+      height: 80px;
+      width: 80px;
+      position: relative;
+      border-radius: 50%;
+      img {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        width: 40%;
+        bottom: 50%;
+      }
+    }
+  }
+}
+#boost {
+  text-align: center;
+  background-image: url("/images/bg-boost-mobile.svg");
+  background-color: $primary-dark-violet;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2em 0;
+  h4 {
+    font-size: 1.5em;
+    color: $light;
+  }
+}
+.shorten-input__error {
+  border: 2px solid $seconday-red;
+}

@@ -1,0 +1,233 @@
+@media (min-width: 426px) {
+  header {
+    .header-container {
+      flex-direction: row;
+      height: 40px;
+      align-items: center;
+      flex-wrap: nowrap;
+      .logo {
+        display: flex;
+        flex-direction: center;
+        justify-content: center;
+        vertical-align: middle;
+        height: auto;
+        margin-bottom: 0;
+      }
+      nav.hidden {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+        width: 60%;
+        ul {
+          background-color: inherit;
+          flex-direction: row;
+          padding-left: 2rem;
+          height: 20px;
+          align-items: center;
+          padding: 0;
+          li {
+            align-self: center;
+            color: $gray;
+            margin: 0;
+            padding: 0;
+            margin-left: 2rem;
+            a {
+              color: $dark;
+            }
+          }
+          .members {
+            align-self: center;
+            padding: 0;
+            margin: 0;
+            border: none;
+            flex-direction: row;
+            margin-left: auto;
+            align-items: center;
+            .login_link {
+              color: $dark;
+            }
+            .signup_btn {
+              margin: 0;
+              padding: 0;
+              margin-left: 2rem;
+              padding: 1rem 2rem;
+            }
+          }
+        }
+      }
+      .m_menu {
+        display: none;
+      }
+    }
+  }
+  footer {
+    padding: 4rem 0;
+    .container {
+      .logo {
+        display: block;
+        max-width: 100px;
+        width: 20%;
+      }
+      .navs {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        width: 60%;
+        margin-left: auto;
+        justify-content: space-between;
+        .nav {
+          padding: 0;
+          margin: 0;
+          .nav_title {
+            font-size: 1rem;
+            text-align: left;
+          }
+          ul {
+            text-align: center;
+            li {
+              text-align: left;
+              a {
+                font-size: 0.8rem;
+                text-align: left;
+              }
+            }
+          }
+        }
+        .socials {
+          padding: 0 !important;
+          .social {
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1023px) {
+  body {
+    font-size: 16px;
+  }
+  #hero {
+    height: calc(100vh - 104px);
+    position: relative;
+  }
+  .hero-warper img {
+    width: 50%;
+  }
+  .container,
+  .header-container {
+    max-width: 1084px;
+  }
+  .hero-warper {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+  .hero-heading {
+    text-align: left;
+    h1 {
+      font-size: 3.5em;
+      line-height: 64px;
+    }
+    p {
+      width: 70%;
+    }
+  }
+  .get-started {
+    width: 30%;
+  }
+  .shorten-form {
+    display: flex;
+    justify-content: space-between;
+    background-image: url("/images/bg-shorten-desktop.svg");
+    background-position: 0;
+    padding: 3em;
+    .shorten-input__error {
+      border: 2px solid $seconday-red;
+      &::placeholder {
+        color: $seconday-red;
+      }
+    }
+    .shorten-btn {
+      width: 20%;
+      align-self: baseline;
+      font-size: 1em;
+    }
+    .shorten-input {
+      margin: 0 1em 0 0 !important;
+    }
+  }
+  .shorten-result {
+    .shorten-result__elm {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .original-link {
+        align-self: center;
+        border: none;
+      }
+    }
+    .link-result {
+      display: flex;
+      padding: 0.8em;
+      a,
+      button {
+        align-self: center;
+      }
+      .copy-btn {
+        padding: 0.6em 2em !important;
+        margin-left: 1em;
+      }
+    }
+  }
+  .stat-title {
+    font-size: 2.2em;
+  }
+  .stat-heading {
+    width: 50%;
+    display: inline-block;
+  }
+  .stat-cards {
+    display: flex;
+    position: relative;
+    height: 27em;
+
+    &::after {
+      content: "";
+      top: 50%;
+      position: absolute;
+      width: 80%;
+      z-index: -1;
+      height: 8px;
+      background-color: #2acfcf;
+    }
+    .stat-card {
+      &:nth-child(2) {
+        align-self: center;
+      }
+      &:nth-child(3) {
+        align-self: flex-end;
+      }
+      margin: 0 2em 0 0;
+      max-height: 310px;
+    }
+  }
+  #boost {
+    background-image: url(/images/bg-boost-desktop.svg);
+    padding: 3em 0;
+    h4 {
+      font-size: 2em;
+    }
+    button {
+      width: 20% !important;
+    }
+  }
+  .footer-warper {
+    display: flex;
+  }
+}
