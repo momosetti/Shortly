@@ -17,7 +17,9 @@ export default function Shorten() {
       );
       const response = await data.json();
       formRef.current.className = "";
-      setShortenUrl(shortenUrls.concat(response.result));
+      response.ok
+        ? setShortenUrl(shortenUrls.concat(response.result))
+        : console.error(response.error);
     } else {
       urlValue.current.className += " shorten-input__error";
     }
