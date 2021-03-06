@@ -1,10 +1,21 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ShortenLink from "./ShortenLink";
 import { RE_WEBURL, API_ENDPOINT } from "../utils";
+
 export default function Shorten() {
   const [shortenUrls, setShortenUrl] = useState([]);
+
   const urlValue = useRef(null);
   const formRef = useRef(null);
+
+  useEffect(() => {
+    localStorage.getItem("shortenUrlData") &&
+      setShortenUrl(JSON.parse(localStorage.getItem("shortenUrlData")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("shortenUrlData", JSON.stringify(shortenUrls));
+  }, [shortenUrls]);
 
   const handleRequest = async (e) => {
     e.preventDefault();
@@ -22,9 +33,11 @@ export default function Shorten() {
       const response = await data.json();
       formRef.current.className = "";
       // Handle response
-      response.ok
-        ? setShortenUrl(shortenUrls.concat(response.result))
-        : console.error(response.error);
+      if (response.ok) {
+        setShortenUrl(shortenUrls.concat(response.result));
+      } else {
+        console.error(response.error);
+      }
     } else {
       urlValue.current.className += " shorten-input__error";
     }
