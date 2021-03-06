@@ -11,8 +11,11 @@ export default function ShortenLink({ links }) {
     try {
       await navigator.clipboard.writeText(e.target.dataset.url);
       e.target.textContent = "Copied!";
+      e.target.className += " copied";
       setTimeout(() => {
+        // after 800ms the copy button will get "Copy" as text content and orginal class name
         e.target.textContent = "Copy";
+        e.target.className = "primary-btn copy-btn";
       }, 800);
     } catch (err) {
       console.error("Failed to copy!", err);
