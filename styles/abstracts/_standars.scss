@@ -19,3 +19,7 @@ li {
 .copied {
   background-color: $primary-dark-violet !important;
 }
+.isLoading {
+  pointer-events: none;
+  filter: blur(1px);
+}
