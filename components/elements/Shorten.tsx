@@ -8,11 +8,19 @@ export default function Shorten() {
   const urlValue = useRef(null);
   const formRef = useRef(null);
 
+  /*
+  Check whether we've a saved object in the local storage or no.
+  if yes, it will be our intial shortenUrls state before the app fully loaded
+  */
   useEffect(() => {
     localStorage.getItem("shortenUrlData") &&
       setShortenUrl(JSON.parse(localStorage.getItem("shortenUrlData")));
   }, []);
 
+  /*
+  Run the side effect where the state changed and set the ShortenUrls
+  state to our shortenUrlData local storage object
+  */
   useEffect(() => {
     localStorage.setItem("shortenUrlData", JSON.stringify(shortenUrls));
   }, [shortenUrls]);
@@ -33,12 +41,11 @@ export default function Shorten() {
       const response = await data.json();
       formRef.current.className = "";
       // Handle response
-      if (response.ok) {
-        setShortenUrl(shortenUrls.concat(response.result));
-      } else {
-        console.error(response.error);
-      }
+      response.ok
+        ? setShortenUrl(shortenUrls.concat(response.result))
+        : console.error(response.error);
     } else {
+      // The case the url inserted is invalid show error message
       urlValue.current.className += " shorten-input__error";
     }
   };
