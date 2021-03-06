@@ -5,11 +5,18 @@ export default function ShortenLink({ links }) {
     for every shorten url with one event listener
     I used borwser Clipboard API to copy data to user clipboard
     */
-    await navigator.clipboard.writeText(e.target.dataset.url);
-    e.target.textContent = "Copied!";
-    setTimeout(() => {
-      e.target.textContent = "Copy";
-    }, 800);
+    if (!navigator.clipboard) {
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(e.target.dataset.url);
+      e.target.textContent = "Copied!";
+      setTimeout(() => {
+        e.target.textContent = "Copy";
+      }, 800);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
   };
   return (
     <>
