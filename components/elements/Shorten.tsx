@@ -8,15 +8,20 @@ export default function Shorten() {
 
   const handleRequest = async (e) => {
     e.preventDefault();
+    // Check whether the url given is a valid url
     if (RE_WEBURL.test(urlValue.current.value)) {
+      // Set the url shorten-form into loading state
       urlValue.current.className = "shorten-input";
       formRef.current.className = "isLoading";
+
+      // Fetch data asynchronously
       const data = await fetch(
         API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
         { method: "GET" }
       );
       const response = await data.json();
       formRef.current.className = "";
+      // Handle response
       response.ok
         ? setShortenUrl(shortenUrls.concat(response.result))
         : console.error(response.error);
