@@ -1,23 +1,31 @@
 import { useRef, useState } from "react";
 import ShortenLink from "./ShortenLink";
-
+import { RE_WEBURL, API_ENDPOINT } from "../utils";
 export default function Shorten() {
   const [shortenUrls, setShortenUrl] = useState([]);
   const urlValue = useRef(null);
-  const API_ENDPOINT = "https://api.shrtco.de/v2/";
+  const formRef = useRef(null);
+
   const handleRequest = async (e) => {
     e.preventDefault();
-    const data = await fetch(
-      API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
-      { method: "GET" }
-    );
-    const response = await data.json();
-    setShortenUrl(shortenUrls.concat(response.result));
+    if (RE_WEBURL.test(urlValue.current.value)) {
+      urlValue.current.className = "shorten-input";
+      formRef.current.className = "isLoading";
+      const data = await fetch(
+        API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
+        { method: "GET" }
+      );
+      const response = await data.json();
+      formRef.current.className = "";
+      setShortenUrl(shortenUrls.concat(response.result));
+    } else {
+      urlValue.current.className += " shorten-input__error";
+    }
   };
   return (
     <section id="shorten-link">
       <div className="container">
-        <form onSubmit={handleRequest}>
+        <form ref={formRef} onSubmit={handleRequest}>
           <div className="shorten-form">
             <input
               ref={urlValue}
