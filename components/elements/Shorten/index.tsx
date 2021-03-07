@@ -5,7 +5,7 @@ import { RE_WEBURL, API_ENDPOINT } from "../../utils";
 
 export default function Shorten() {
   const [shortenUrls, setShortenUrl] = useState([]);
-
+  const [isValidURL, setIsValidURL] = useState(true);
   const urlValue = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -48,7 +48,8 @@ export default function Shorten() {
           : console.error(response.error);
       } else {
         // The case the url inserted is invalid show error message
-        urlValue.current.className += " shorten-input__error";
+        // toggle the state
+        setIsValidURL(!isValidURL);
       }
     }
   };
@@ -61,8 +62,12 @@ export default function Shorten() {
               ref={urlValue}
               placeholder="Shorten a link here..."
               type="text"
-              className="shorten-input"
+              className={`shorten-input ${
+                !isValidURL && "shorten-input__error"
+              }`}
+              name="url-input"
             />
+            <label htmlFor="url-input">Please add a link</label>
             <button className="primary-btn shorten-btn">shorten it!</button>
           </div>
         </form>
