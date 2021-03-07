@@ -1,4 +1,8 @@
-export default function ShortenLink({ links }) {
+import { LinksProps } from "../../interfaces";
+import CopyBtn from "./CopyBtn";
+import CoptyBtn from "./CopyBtn";
+
+export default function ShortenLink({ links }: LinksProps) {
   const copyToClipboard = async (e) => {
     /*
     Use event delegation and data-* jsx attribute to get url data
@@ -9,7 +13,9 @@ export default function ShortenLink({ links }) {
       return;
     }
     try {
-      await navigator.clipboard.writeText(e.target.dataset.url);
+      await navigator.clipboard.writeText(
+        e.target.dataset.url || "Failed to copy!"
+      );
       e.target.textContent = "Copied!";
       e.target.className += " copied";
       setTimeout(() => {
@@ -29,13 +35,10 @@ export default function ShortenLink({ links }) {
             <p className="original-link">{link.original_link}</p>
             <div className="link-result">
               <a href={link.full_short_link}>{link.full_short_link}</a>
-              <button
-                data-url={link.full_short_link}
-                onClick={copyToClipboard}
-                className="primary-btn copy-btn"
-              >
-                copy
-              </button>
+              <CopyBtn
+                copyFun={copyToClipboard}
+                shortenLink={link.full_short_link}
+              />
             </div>
           </div>
         );

@@ -1,12 +1,13 @@
+import { FormEvent } from "react";
 import { useRef, useState, useEffect } from "react";
 import ShortenLink from "./ShortenLink";
-import { RE_WEBURL, API_ENDPOINT } from "../utils";
+import { RE_WEBURL, API_ENDPOINT } from "../../utils";
 
 export default function Shorten() {
   const [shortenUrls, setShortenUrl] = useState([]);
 
-  const urlValue = useRef(null);
-  const formRef = useRef(null);
+  const urlValue = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   /*
   Check whether we've a saved object in the local storage or no.
@@ -14,7 +15,7 @@ export default function Shorten() {
   */
   useEffect(() => {
     localStorage.getItem("shortenUrlData") &&
-      setShortenUrl(JSON.parse(localStorage.getItem("shortenUrlData")));
+      setShortenUrl(JSON.parse(localStorage.getItem("shortenUrlData") || "[]"));
   }, []);
 
   /*
@@ -25,28 +26,30 @@ export default function Shorten() {
     localStorage.setItem("shortenUrlData", JSON.stringify(shortenUrls));
   }, [shortenUrls]);
 
-  const handleRequest = async (e) => {
+  const handleRequest = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Check whether the url given is a valid url
-    if (RE_WEBURL.test(urlValue.current.value)) {
-      // Set the url shorten-form into loading state
-      urlValue.current.className = "shorten-input";
-      formRef.current.className = "isLoading";
+    if (urlValue.current !== null && formRef.current !== null) {
+      if (RE_WEBURL.test(urlValue.current.value)) {
+        // Set the url shorten-form into loading state
+        urlValue.current.className = "shorten-input";
+        formRef.current.className = "isLoading";
 
-      // Fetch data asynchronously
-      const data = await fetch(
-        API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
-        { method: "GET" }
-      );
-      const response = await data.json();
-      formRef.current.className = "";
-      // Handle response
-      response.ok
-        ? setShortenUrl(shortenUrls.concat(response.result))
-        : console.error(response.error);
-    } else {
-      // The case the url inserted is invalid show error message
-      urlValue.current.className += " shorten-input__error";
+        // Fetch data asynchronously
+        const data = await fetch(
+          API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
+          { method: "GET" }
+        );
+        const response = await data.json();
+        formRef.current.className = "";
+        // Handle response
+        response.ok
+          ? setShortenUrl(shortenUrls.concat(response.result))
+          : console.error(response.error);
+      } else {
+        // The case the url inserted is invalid show error message
+        urlValue.current.className += " shorten-input__error";
+      }
     }
   };
   return (
