@@ -56,7 +56,7 @@ export default function Shorten() {
   return (
     <section id="shorten-link">
       <div className="container">
-        <form ref={formRef} onSubmit={handleRequest}>
+        <form ref={formRef} onSubmit={handleRequest} data-testid="form">
           <div className="shorten-form">
             <input
               ref={urlValue}

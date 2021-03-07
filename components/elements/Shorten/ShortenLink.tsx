@@ -30,7 +30,11 @@ export default function ShortenLink({ links }: LinksProps) {
     <>
       {links.map((link) => {
         return (
-          <div className="shorten-result__elm" key={link.code}>
+          <div
+            data-testid="result"
+            className="shorten-result__elm"
+            key={link.code}
+          >
             <p className="original-link">{link.original_link}</p>
             <div className="link-result">
               <a href={link.full_short_link}>{link.full_short_link}</a>
