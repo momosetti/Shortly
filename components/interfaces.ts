@@ -7,6 +7,6 @@ export interface LinksProps {
   links: Link[];
 }
 export interface CopyBtnProps {
-  copyFun: () => void;
+  copyFun: (x: React.ChangeEvent<HTMLButtonElement>) => Promise<void>;
   shortenLink: string;
 }
