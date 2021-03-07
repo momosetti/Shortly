@@ -3,8 +3,8 @@ export default function Header() {
   useEffect(() => {
     const mobileNav = document.querySelector("#m_nav");
     const nav = document.querySelector("#nav");
-    mobileNav.addEventListener("click", () => {
-      nav.classList.toggle("hidden");
+    mobileNav?.addEventListener("click", () => {
+      nav?.classList.toggle("hidden");
     });
   }, []);
 
