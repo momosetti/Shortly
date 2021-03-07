@@ -151,12 +151,7 @@
     background-image: url("/images/bg-shorten-desktop.svg");
     background-position: 0;
     padding: 3em;
-    .shorten-input__error {
-      border: 2px solid $seconday-red;
-      &::placeholder {
-        color: $seconday-red;
-      }
-    }
+
     .shorten-btn {
       width: 20%;
       align-self: baseline;
@@ -233,5 +228,15 @@
   }
   .footer-warper {
     display: flex;
+  }
+  .shorten-input__error {
+    + label {
+      display: block !important;
+      font-size: 0.8em;
+      padding: 0.2em 0;
+      position: absolute;
+      bottom: 25px;
+      color: #f46262;
+    }
   }
 }
