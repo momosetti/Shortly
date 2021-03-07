@@ -1,9 +1,8 @@
 import { LinksProps } from "../../interfaces";
 import CopyBtn from "./CopyBtn";
-import CoptyBtn from "./CopyBtn";
 
 export default function ShortenLink({ links }: LinksProps) {
-  const copyToClipboard = async (e) => {
+  const copyToClipboard = async (e: React.ChangeEvent<HTMLButtonElement>) => {
     /*
     Use event delegation and data-* jsx attribute to get url data
     for every shorten url with one event listener
