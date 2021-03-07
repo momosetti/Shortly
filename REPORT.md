@@ -8,7 +8,7 @@
 
 - Editor: Vscode (Eslint and Prettier for linting and formating).
 
-- Source control version: GIT.
+- Source control version: GIT. (I used [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) as Commit Guidelines)
 - Testing:
 
   - Test runner: Jest
