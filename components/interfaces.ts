@@ -6,3 +6,7 @@ export interface Link {
 export interface LinksProps {
   links: Link[];
 }
+export interface CopyBtnProps {
+  copyFun: () => void;
+  shortenLink: string;
+}
