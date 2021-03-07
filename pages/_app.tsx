@@ -1,6 +1,7 @@
 import "../styles/app.scss";
 import Head from "next/head";
-function MyApp({ Component, pageProps }) {
+import { AppProps } from "next/app";
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
