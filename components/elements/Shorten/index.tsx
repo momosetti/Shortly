@@ -36,16 +36,30 @@ export default function Shorten() {
         formRef.current.className = "isLoading";
 
         // Fetch data asynchronously
-        const data = await fetch(
-          API_ENDPOINT + `shorten?url=${urlValue.current.value}`,
-          { method: "GET" }
-        );
-        const response = await data.json();
-        formRef.current.className = "";
-        // Handle response
-        response.ok
-          ? setShortenUrl(shortenUrls.concat(response.result))
-          : console.error(response.error);
+        try {
+          const res = await fetch("api/urlAdd", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              url: urlValue.current.value,
+            }),
+          });
+          const data: { id: string; shorturl: string } = await res.json();
+          setShortenUrl(
+            shortenUrls.concat({
+              code: data.id,
+              original_link: urlValue.current.value,
+              full_short_link: data.shorturl,
+            })
+          );
+          formRef.current.className = "";
+          urlValue.current.value = "";
+          console.log(data);
+        } catch (e) {
+          console.error(e);
+        }
       } else {
         // The case the url inserted is invalid show error message
         // toggle the state
